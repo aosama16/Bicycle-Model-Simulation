@@ -23,6 +23,17 @@ private:
     QGraphicsScene *scene;
     QGraphicsEllipseItem* vehicleFrame;
     void drawVehicle();
+
+    // Vehicle Parameters
+    const double MAX_VELOCITY = 5.0;
+    const double MAX_STEERING = 60.0;
+
+    double velocity;
+    double steeringAngle;
+    double x;
+    double y;
+    double theta;
+    double wheelBase;
 };
 
 #endif // MAINWINDOW_H

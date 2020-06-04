@@ -14,6 +14,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->scale(1, -1);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
 
+    // Vehicle Paramaters initialization
+    velocity = 0.0;
+    steeringAngle = 0.0;
+    x = 0.0;
+    y = 0.0;
+    theta = 0.0;
+    wheelBase = 2.0;
+
     drawVehicle();
 }
 
