@@ -37,6 +37,21 @@ void MainWindow::drawVehicle()
     vehicle->setRect(0, 0, 50, 30);
 }
 
+void MainWindow::updateVehiclePosition()
+{
+    double delta_x      = velocity * qCos(qDegreesToRadians(theta));
+    double delta_y      = velocity * qSin(qDegreesToRadians(theta));
+    double delta_theta  = (velocity/wheelBase) * qTan(qDegreesToRadians(steeringAngle));
+
+    x+= delta_x;
+    y+= delta_y;
+    theta += delta_theta;
+
+    vehicleFrame->setX(x);
+    vehicleFrame->setY(y);
+    vehicleFrame->setRotation(theta);
+}
+
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_W) // Forward
