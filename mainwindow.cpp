@@ -23,6 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
     wheelBase = 2.0;
 
     drawVehicle();
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), SLOT(updateVehiclePosition()));
+    timer->start(20);
 }
 
 void MainWindow::drawVehicle()
