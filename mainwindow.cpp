@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QPixmap>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -30,14 +31,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::drawVehicle()
 {
-    vehicleFrame = new QGraphicsEllipseItem();
-    scene->addItem(vehicleFrame);
-
-    QGraphicsTextItem *arrow = new QGraphicsTextItem(">", vehicleFrame);
-    arrow->setPos(15, 3);
-
-    QGraphicsRectItem *vehicle = new QGraphicsRectItem(vehicleFrame);
-    vehicle->setRect(0, 0, 50, 30);
+    QImage image("../vehicle.png");
+    vehicle = scene->addPixmap(QPixmap::fromImage( image ));
+    vehicle->setScale(0.05);
+    vehicle->setTransformationMode( Qt::SmoothTransformation );
+    vehicle->setOffset(50,50);
 }
 
 void MainWindow::updateVehiclePosition()
@@ -50,9 +48,8 @@ void MainWindow::updateVehiclePosition()
     y+= delta_y;
     theta += delta_theta;
 
-    vehicleFrame->setX(x);
-    vehicleFrame->setY(y);
-    vehicleFrame->setRotation(theta);
+    vehicle->setPos(x,y);
+    vehicle->setRotation(theta);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)

@@ -21,8 +21,9 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    QGraphicsEllipseItem* vehicleFrame;
+    QGraphicsPixmapItem *vehicle;
     void drawVehicle();
+
 
     // Vehicle Parameters
     const double MAX_VELOCITY = 5.0;
