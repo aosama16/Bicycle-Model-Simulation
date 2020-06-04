@@ -37,6 +37,46 @@ void MainWindow::drawVehicle()
     vehicle->setRect(0, 0, 50, 30);
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_W) // Forward
+    {
+        velocity = MAX_VELOCITY;
+    }
+    else if (event->key() == Qt::Key_S) // Backward
+    {
+        velocity = -1.0 * MAX_VELOCITY;
+    }
+    else if (event->key() == Qt::Key_A) // Left
+    {
+        steeringAngle = MAX_STEERING;
+    }
+    else if (event->key() == Qt::Key_D) // Right
+    {
+        steeringAngle = -1.0 * MAX_STEERING;
+    }
+}
+
+void MainWindow::keyReleaseEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_W) // Forward
+    {
+        velocity = 0.0;
+    }
+    else if (event->key() == Qt::Key_S) // Backward
+    {
+        velocity = 0.0;
+    }
+    else if (event->key() == Qt::Key_A) // Left
+    {
+        steeringAngle = 0.0;
+    }
+    else if (event->key() == Qt::Key_D) // Right
+    {
+        steeringAngle = 0.0;
+    }
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;

@@ -34,6 +34,10 @@ private:
     double y;
     double theta;
     double wheelBase;
+
+protected:
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 };
 
 #endif // MAINWINDOW_H
